@@ -17,6 +17,7 @@ class Videos(models.Model):
         blank=False,
         null=False
     )
+    
     title=models.CharField(255)
     description=models.TextField()
     duration=models.IntegerField()
