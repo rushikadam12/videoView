@@ -42,7 +42,7 @@ class Videos(models.Model):
         on_delete=models.CASCADE
     )
     
-    title=models.CharField(255)
+    title=models.CharField(max_length=255)
     description=models.TextField()
     duration=models.IntegerField()
     views=models.IntegerField()
@@ -52,16 +52,16 @@ class Videos(models.Model):
         return self.title
     
     
-class Subscriptions(models.Model):
-    id=models.UUIDField(
-        primary_key=True,
-        default=uuid.uuid4,
-        editable=False
-    )
-    created_at=models.DateTimeField(auto_now_add=True)
-    updated_at=models.DateTimeField(auto_now=True)
-    subscriber=models.ForeignKey('Users',related_name="subscribed_user",on_delete=models.CASCADE)
-    channel=models.ForeignKey('Users',related_name="subscribed_channel",on_delete=models.CASCADE)
+# class Subscriptions(models.Model):
+#     id=models.UUIDField(
+#         primary_key=True,
+#         default=uuid.uuid4,
+#         editable=False
+#     )
+#     created_at=models.DateTimeField(auto_now_add=True)
+#     updated_at=models.DateTimeField(auto_now=True)
+#     subscriber=models.ForeignKey('Users',related_name="subscribed_user",on_delete=models.CASCADE)
+#     channel=models.ForeignKey('Users',related_name="subscribed_channel",on_delete=models.CASCADE)
 
 
 # class Likes(models.Model):
