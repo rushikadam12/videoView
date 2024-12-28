@@ -130,15 +130,27 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {filename} {module} {funcName} {lineno}: {message}',
+            'style': '{',  # Using new-style formatting
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
     'handlers': {
         'console': {
-            'level': 'INFO',  # You can adjust the logging level as per your needs
+            'level': 'INFO',  # You can adjust the level to capture logs you need
             'class': 'logging.StreamHandler',
+            'formatter': 'verbose',  # Use the verbose formatter for detailed logs
         },
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'filename': 'app.log',
+            'formatter': 'verbose',  # Use the verbose formatter for detailed logs
         },
     },
     'loggers': {
@@ -147,10 +159,15 @@ LOGGING = {
             'level': 'INFO',
             'propagate': True,
         },
-        'api': {  # This is the logger you defined in your view
+        'django.request': {  # This is the logger for Django's request logging
             'handlers': ['console', 'file'],
             'level': 'DEBUG',
             'propagate': False,
+        },
+        'api': {  # Custom logger for your views or API
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': True,
         },
     },
 }

@@ -15,8 +15,7 @@ class Users(models.Model):
         related_name='video_viewed_by',
         blank=True
     )
-    username=models.CharField(max_length=255)
-    email=models.EmailField(max_length=254)
+    email=models.EmailField(max_length=254,unique=True)
     fullName=models.CharField(max_length=255)
     avatar=models.URLField(max_length=200)
     coverImage=models.URLField(max_length=200)
