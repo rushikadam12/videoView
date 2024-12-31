@@ -115,3 +115,61 @@ class UserUpdateImageSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+
+# created_at=models.DateTimeField(auto_now_add=True)
+#     updated_at=models.DateTimeField(auto_now=True)
+#     videoFile=models.URLField(max_length=200)
+#     thumbnail=models.URLField()
+#     owner=models.ForeignKey(
+#         "Users",
+#         related_name="video_owner",
+#         on_delete=models.CASCADE
+#     )
+    
+#     title=models.CharField(max_length=255)
+#     description=models.TextField()
+#     duration=models.IntegerField()
+#     views=models.IntegerField()
+#     isPublished=models.BooleanField()
+
+class VideoSerializer(serializers.ModelSerializer):
+    videoFile = serializers.FileField(required=False, allow_null=True)
+    thumbnail = serializers.ImageField(required=False, allow_null=True)
+    # owner=serializers.PrimaryKeyRelatedField(query=Users.objects.all(),required=False,read_only=True)
+
+    class Meta:
+        model=Videos
+        fields=['videoFile','thumbnail','title','description','duration','isPublished']
+
+
+    def create(self,validate_data):
+        user=self.context.get('userId')
+
+        videoFile=validate_data.get("videoFile")
+        thumbnail=validate_data.get('thumbnail')
+
+        user=Users.objects.filter(pk=instance).first()
+        
+        video_instance=Videos()
+
+        if thumbnail:
+            avatar_img=cloudinary.uploader.upload(thumbnail,asset_folder="thumbnail",resource_type="image")
+            video_instance.videoFile=videoFile.get("secure_url")
+        
+        if videoFile:
+           videoFile=cloudinary.uploader.upload(videoFile,asset_folder="video",resource_type="video")
+           video_instance.thumbnail=videoFile.get("secure_url")
+        
+        
+        
+        video_instance.title=validate_data.get('title')
+        video_instance.description=validate_data.get('description')
+        video_instance.owner=user
+
+        video_instance.save()
+
+        return Videos
+
+
+

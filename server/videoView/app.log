@@ -1,0 +1,21 @@
+WARNING 2024-12-31 20:29:40,740 log.py log log_response 248: Method Not Allowed: /api/v1/login
+DEBUG 2024-12-31 20:29:55,886 VideoView.py VideoView upload_video 34: 'Request' object has no attribute 'user_id'
+ERROR 2024-12-31 20:29:55,887 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2024-12-31 20:30:33,364 VideoView.py VideoView upload_video 34: 'Request' object has no attribute 'user_id'
+ERROR 2024-12-31 20:30:33,364 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+WARNING 2024-12-31 20:33:37,856 log.py log log_response 248: Unauthorized: /api/v1/upload_video
+WARNING 2024-12-31 20:40:58,799 log.py log log_response 248: Unauthorized: /api/v1/upload_video
+DEBUG 2024-12-31 20:41:09,565 VideoView.py VideoView upload_video 35: 'str' object has no attribute '_meta'
+ERROR 2024-12-31 20:41:09,565 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2024-12-31 20:43:07,580 VideoView.py VideoView upload_video 35: 'str' object has no attribute '_meta'
+ERROR 2024-12-31 20:43:07,580 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2024-12-31 20:43:37,907 VideoView.py VideoView upload_video 35: 'str' object has no attribute '_meta'
+ERROR 2024-12-31 20:43:37,907 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2024-12-31 20:46:07,000 VideoView.py VideoView upload_video 35: 'str' object has no attribute '_meta'
+ERROR 2024-12-31 20:46:07,001 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2024-12-31 20:51:37,707 VideoView.py VideoView upload_video 35: 'NoneType' object has no attribute 'user_id'
+ERROR 2024-12-31 20:51:37,708 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2024-12-31 20:52:04,966 VideoView.py VideoView upload_video 35: 'str' object has no attribute 'user_id'
+ERROR 2024-12-31 20:52:04,966 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2024-12-31 20:52:17,392 VideoView.py VideoView upload_video 35: name 'instance' is not defined
+ERROR 2024-12-31 20:52:17,393 log.py log log_response 248: Internal Server Error: /api/v1/upload_video

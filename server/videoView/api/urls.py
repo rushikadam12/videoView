@@ -1,5 +1,6 @@
 from django.urls import path
 from api.Views.UserViews import *
+from api.Views.VideoView import *
 
 urlpatterns=[
 
@@ -11,6 +12,9 @@ urlpatterns=[
     path("logout",logout_user,name="logout_user"),
     path("update_user",update_user,name="update_user") ,
     path("generate_new_token",request_access_token,name="request_access_token"),
-    path("reset_password",reset_password,name="reset_password") 
+    path("reset_password",reset_password,name="reset_password"),
+
+    # video
+    path("upload_video",upload_video,name="upload_user")
 
 ]

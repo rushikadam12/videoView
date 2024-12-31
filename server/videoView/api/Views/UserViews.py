@@ -4,7 +4,7 @@ from functools import wraps
 from rest_framework.decorators import api_view
 from api.serializer import UsersRegistrationSerializer,UserUpdateImageSerializer
 from api.models import Users
-from api.utility import generated_refreshToken,check_pass,validate_token
+from api.utility import generated_refreshToken,check_pass,validate_token,ValidateUser
 from django.contrib.auth import authenticate
 from utils.ApiResponseClass import ApiResponse
 from rest_framework.response import Response
@@ -17,33 +17,7 @@ load_dotenv()
 logger = logging.getLogger('api.UserViews')  
 
 
-def ValidateUser(func):
-    
-    @wraps(func)
-    def wraps_func(request,*args,**kwargs):
-        try:
-            
-            access_token=request.COOKIES.get('access_token')
-            refresh_token=request.COOKIES.get('refresh_token')
-            
-            if not access_token and not refresh_token:
-                return Response(ApiResponse.error(401,error="Unauthorized user",message="").__dict__,status=401) 
 
-            decode_data=jwt.decode(access_token,os.getenv('SECURE_KEY'),algorithms=['HS256'])
-            user_id=decode_data.get('id')
-
-            if not user_id:
-                return Response(ApiResponse.error(403,error="Invalid token",message="").__dict__,status=403)
-                
-            request.user_id=user_id
-            
-        except Exception as e:
-            logger.debug(f'{e}')
-            return Response(ApiResponse.error(403,error=f"token not found",message="").__dict__,status=403)
-
-        return func(request,*args,**kwargs)
-
-    return wraps_func
 
 @api_view(['GET'])
 def health_check(request):
