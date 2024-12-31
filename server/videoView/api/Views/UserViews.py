@@ -2,9 +2,9 @@ import logging
 from django.http import JsonResponse
 from functools import wraps
 from rest_framework.decorators import api_view
-from api.serializer import UsersRegistrationSerializer
+from api.serializer import UsersRegistrationSerializer,UserUpdateImageSerializer
 from api.models import Users
-from api.utility import generated_refreshToken,check_pass
+from api.utility import generated_refreshToken,check_pass,validate_token
 from django.contrib.auth import authenticate
 from utils.ApiResponseClass import ApiResponse
 from rest_framework.response import Response
@@ -24,15 +24,19 @@ def ValidateUser(func):
         try:
             
             access_token=request.COOKIES.get('access_token')
+            refresh_token=request.COOKIES.get('refresh_token')
             
-            if not access_token:
+            if not access_token and not refresh_token:
                 return Response(ApiResponse.error(401,error="Unauthorized user",message="").__dict__,status=401) 
 
             decode_data=jwt.decode(access_token,os.getenv('SECURE_KEY'),algorithms=['HS256'])
             user_id=decode_data.get('id')
+
             if not user_id:
                 return Response(ApiResponse.error(403,error="Invalid token",message="").__dict__,status=403)
+                
             request.user_id=user_id
+            
         except Exception as e:
             logger.debug(f'{e}')
             return Response(ApiResponse.error(403,error=f"token not found",message="").__dict__,status=403)
@@ -139,3 +143,74 @@ def logout_user(request):
     except Exception as e:
         logger.debug(f"{e}")
         return Response(ApiResponse.error(500,"something went wrong",error=f"{e}").__dict__,status=500)
+
+@api_view(['PATCH'])
+@ValidateUser
+def update_user(request):
+    try:
+        
+        user=request.user_id
+        serializer=UserUpdateImageSerializer(instance=user,data=request.data,partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(ApiResponse.success(201,"update user cover",[]).__dict__,status=201)
+        
+        return Response(ApiResponse.error(400,"Failed to update",error=serializer.errors).__dict__,status=400)
+    except Exception as e:
+        logger.debug(f"Error :{e}")
+        return Response(ApiResponse.error(500,"something went wrong",{"message":f"{e}"}).__dict__,status=500)
+
+@api_view(['GET'])
+@ValidateUser
+def request_access_token(request):
+    try:
+        #find user
+        user=Users.objects.filter(pk=request.user_id).first()
+
+        token={
+            "access_token":request.COOKIES.get('access_token'),
+            "refresh_token":request.COOKIES.get('refresh_token')
+        }
+
+        # check refresh token and generate new token
+        new_token=validate_token(user=user,token=token)
+        logger.debug(new_token)
+        # set token
+        user.refreshToken=new_token.get('refresh_token')
+        user.save()
+
+        response=Response(ApiResponse.success(201,"new token generate",response=[]).__dict__,status=201)
+
+        # set-cookie
+        response.set_cookie('access_token',new_token['access_token'],httponly=True,secure=False,max_age=3600)
+        response.set_cookie('refresh_token',new_token['refresh_token'],httponly=True,secure=False,max_age=36400)
+
+        return response
+
+    except Exception as e:
+
+        logger.debug(f"{e}")
+        return Response(ApiResponse.error(500,"something went wrong",{"message":f"{e}"}).__dict__,status=500)
+    
+@api_view(['POST'])
+def reset_password(request):
+    try:
+        email=request.data.get("email")
+    
+        user=Users.objects.filter(email=email).first()
+        if not user:
+            return Response(ApiResponse.error(401,message="",error="user not found").__dict__,status=401)
+
+        subject = 'Welcome to Our Website!'
+        message = 'Thank you for signing up with our website. We are excited to have you!'
+        from_email = settings.DEFAULT_FROM_EMAIL  # You can use DEFAULT_FROM_EMAIL from settings
+        recipient_list = [user_email] 
+
+    except Exception as e:
+        logger.debug("Error : {e}")
+    
+
+
+    
+
