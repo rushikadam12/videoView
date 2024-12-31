@@ -17,8 +17,8 @@ class Users(models.Model):
     )
     email=models.EmailField(max_length=254,unique=True)
     fullName=models.CharField(max_length=255)
-    avatar=models.URLField(max_length=255)
-    coverImage=models.URLField(max_length=200)
+    avatar=models.URLField(max_length=255,null=True)
+    coverImage=models.URLField(max_length=200,null=True)
     password=models.TextField()
     refreshToken=models.TextField()
 

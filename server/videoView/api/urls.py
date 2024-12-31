@@ -7,6 +7,7 @@ urlpatterns=[
     # users
     path("signup",signup,name="signup") ,
     path("login",login,name="login")  ,
-    path("getuser",get_user,name="getuser")  
+    path("getuser",get_user,name="getuser")  ,
+    path("logout",logout_user,name="logout_user")  
 
 ]

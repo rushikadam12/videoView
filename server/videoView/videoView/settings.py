@@ -165,7 +165,7 @@ LOGGING = {
     },
     'handlers': {
         'console': {
-            'level': 'INFO',  # You can adjust the level to capture logs you need
+            'level': 'DEBUG',  # You can adjust the level to capture logs you need
             'class': 'logging.StreamHandler',
             'formatter': 'verbose',  # Use the verbose formatter for detailed logs
         },

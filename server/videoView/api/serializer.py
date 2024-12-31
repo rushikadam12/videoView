@@ -35,8 +35,11 @@ class UsersRegistrationSerializer(serializers.ModelSerializer):
         # image upload to cloudinary
         image1=validate_data.get('avatar')
         image2=validate_data.get('coverImage')
-        avatar_img=cloudinary.uploader.upload(image1)
-        coverImage_img=cloudinary.uploader.upload(image2)
+
+        if image1:
+            avatar_img=cloudinary.uploader.upload(image1)
+        if image1:
+            coverImage_img=cloudinary.uploader.upload(image2)
         
         
         # create user and generate token
@@ -44,12 +47,14 @@ class UsersRegistrationSerializer(serializers.ModelSerializer):
         token=generated_refreshToken(user)
 
         # image
-        user.avatar=avatar_img['secure_url']
-        user.coverImage=coverImage_img['secure_url']
+        if image1:
+            user.avatar=avatar_img['secure_url']
+        if image2:
+            user.coverImage=coverImage_img['secure_url']
 
         # token
         user.refreshToken=token['refresh_token']
-        user.avatar=avatar_img['secure_url']
+        
 
         user.save()
 

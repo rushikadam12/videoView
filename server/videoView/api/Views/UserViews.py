@@ -20,39 +20,30 @@ logger = logging.getLogger('api.UserViews')
 def ValidateUser(func):
     
     @wraps(func)
-    def wraps_func(*args,**kwargs):
+    def wraps_func(request,*args,**kwargs):
         try:
-            request=args[0]
+            
             access_token=request.COOKIES.get('access_token')
-
+            
             if not access_token:
-                return Response(ApiResponse.error(401,error="Unauthorized user").__dict__,status=401) 
+                return Response(ApiResponse.error(401,error="Unauthorized user",message="").__dict__,status=401) 
 
             decode_data=jwt.decode(access_token,os.getenv('SECURE_KEY'),algorithms=['HS256'])
             user_id=decode_data.get('id')
-
             if not user_id:
-                return Response(ApiResponse.error(401,error="Invalid token").__dict__,status=401)
-
-            logger.debug(user_id)
-            
+                return Response(ApiResponse.error(403,error="Invalid token",message="").__dict__,status=403)
+            request.user_id=user_id
         except Exception as e:
             logger.debug(f'{e}')
+            return Response(ApiResponse.error(403,error=f"token not found",message="").__dict__,status=403)
 
-        return func(*args,**kwargs)
+        return func(request,*args,**kwargs)
 
     return wraps_func
 
 @api_view(['GET'])
 def health_check(request):
     logger.debug("Health check endpoint accessed")
-    return JsonResponse({"status":"ok"},status=200)
-
-
-@api_view(['POST'])
-def user_login(request):
-    logger.debug("login view accessed")
-
     return JsonResponse({"status":"ok"},status=200)
 
 
@@ -70,7 +61,6 @@ def signup(request):
         user_data={
             "fullName":user.fullName,
             "email":user.email
-            
         }
 
         
@@ -106,8 +96,8 @@ def login(request):
             
             response=JsonResponse({"message":"login successfully","token":token})
 
-            response.set_cookie('access_token',token['access_token'],httponly=True,max_age=3600)
-            response.set_cookie('refresh_token',token['refresh_token'],httponly=True,max_age=36400)
+            response.set_cookie('access_token',token['access_token'],httponly=True,secure=False,max_age=3600)
+            response.set_cookie('refresh_token',token['refresh_token'],httponly=True,secure=False,max_age=36400)
 
             return response
         
@@ -118,4 +108,34 @@ def login(request):
 @api_view(['GET'])
 @ValidateUser
 def get_user(request):
-    return Response(f"",status=200)
+    user=Users.objects.filter(pk=request.user_id).first()
+    if user:
+        user_obj={
+            "id":user.id,
+            "email":user.email,
+            "fullName":user.fullName,
+            "avatar":user.avatar,
+            "coverImage":user.coverImage,
+            "created_at":user.created_at,
+            "updated_at":user.updated_at
+
+            }
+    else:
+        user_obj={"message":"user not found"}
+    return Response(ApiResponse.success(200,message="user retrieved successfully",response=user_obj).__dict__,status=200)
+
+@api_view(['GET'])
+@ValidateUser
+def logout_user(request):
+    try:
+        response={"message":"logout successfully"}
+        response=Response(ApiResponse.success(200,"logout successfully",response).__dict__,status=200)
+
+        response.delete_cookie('access_token')
+        response.delete_cookie('refresh_token')
+
+        return response
+
+    except Exception as e:
+        logger.debug(f"{e}")
+        return Response(ApiResponse.error(500,"something went wrong",error=f"{e}").__dict__,status=500)
