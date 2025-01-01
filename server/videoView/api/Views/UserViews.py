@@ -31,7 +31,6 @@ def signup(request):
     
     serializer=UsersRegistrationSerializer(data=request.data)
     
-
     if serializer.is_valid():
         
         user,token=serializer.save()
@@ -166,7 +165,9 @@ def request_access_token(request):
 
         logger.debug(f"{e}")
         return Response(ApiResponse.error(500,"something went wrong",{"message":f"{e}"}).__dict__,status=500)
-    
+
+
+ #TODO:Complete SMTP setup adn reset the password   
 @api_view(['POST'])
 def reset_password(request):
     try:

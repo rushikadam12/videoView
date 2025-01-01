@@ -37,9 +37,10 @@ class UsersRegistrationSerializer(serializers.ModelSerializer):
         image1=validate_data.get('avatar')
         image2=validate_data.get('coverImage')
 
+
         if image1:
             avatar_img=cloudinary.uploader.upload(image1)
-        if image1:
+        if image2:
             coverImage_img=cloudinary.uploader.upload(image2)
         
         
@@ -49,12 +50,12 @@ class UsersRegistrationSerializer(serializers.ModelSerializer):
 
         # image
         if image1:
-            user.avatar=avatar_img['secure_url']
+            user.avatar=avatar_img.get('secure_url')
         if image2:
-            user.coverImage=coverImage_img['secure_url']
+            user.coverImage=coverImage_img.get('secure_url')
 
         # token
-        user.refreshToken=token['refresh_token']
+        user.refreshToken=token.get('refresh_token')
         
 
         user.save()
@@ -173,5 +174,14 @@ class VideoSerializer(serializers.ModelSerializer):
 
         return video_instance
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Users
+        fields = ['id', 'fullName', 'email','avatar','coverImage']
 
+class AllVideoSerializer(serializers.ModelSerializer):
+    owner=UserSerializer(read_only=True)
+    class Meta:
+        model=Videos
+        fields=['id','videoFile','thumbnail','owner','title','description','duration','views','isPublished','created_at','updated_at']
 

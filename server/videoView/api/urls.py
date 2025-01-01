@@ -15,6 +15,7 @@ urlpatterns=[
     path("reset_password",reset_password,name="reset_password"),
 
     # video
-    path("upload_video",upload_video,name="upload_user")
+    path("upload_video",upload_video,name="upload_user"),
+    path("get_all_videos",get_all_videos,name="get_all_videos")
 
 ]
