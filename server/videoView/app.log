@@ -19,3 +19,55 @@ DEBUG 2024-12-31 20:52:04,966 VideoView.py VideoView upload_video 35: 'str' obje
 ERROR 2024-12-31 20:52:04,966 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
 DEBUG 2024-12-31 20:52:17,392 VideoView.py VideoView upload_video 35: name 'instance' is not defined
 ERROR 2024-12-31 20:52:17,393 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+WARNING 2025-01-01 08:04:04,541 log.py log log_response 248: Unauthorized: /api/v1/upload_video
+WARNING 2025-01-01 08:05:47,171 log.py log log_response 248: Method Not Allowed: /api/v1/login
+WARNING 2025-01-01 08:06:20,567 log.py log log_response 248: Unauthorized: /api/v1/upload_video
+WARNING 2025-01-01 08:11:23,970 log.py log log_response 248: Unauthorized: /api/v1/upload_video
+DEBUG 2025-01-01 08:11:35,617 VideoView.py VideoView upload_video 35: name 'instance' is not defined
+ERROR 2025-01-01 08:11:35,617 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2025-01-01 08:12:29,605 VideoView.py VideoView upload_video 35: 'TemporaryUploadedFile' object has no attribute 'get'
+ERROR 2025-01-01 08:12:29,607 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2025-01-01 08:13:27,437 serializer.py serializer create 151: 4973185-hd_1920_1080_30fps.mp4
+DEBUG 2025-01-01 08:13:28,986 VideoView.py VideoView upload_video 35: 'TemporaryUploadedFile' object has no attribute 'get'
+ERROR 2025-01-01 08:13:28,988 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2025-01-01 08:14:53,357 serializer.py serializer create 151: 4973185-hd_1920_1080_30fps.mp4
+DEBUG 2025-01-01 08:15:01,249 VideoView.py VideoView upload_video 35: NOT NULL constraint failed: api_videos.duration
+ERROR 2025-01-01 08:15:01,250 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2025-01-01 08:15:35,585 serializer.py serializer create 151: 4973185-hd_1920_1080_30fps.mp4
+DEBUG 2025-01-01 08:15:47,943 VideoView.py VideoView upload_video 35: NOT NULL constraint failed: api_videos.views
+ERROR 2025-01-01 08:15:47,945 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2025-01-01 08:16:30,884 serializer.py serializer create 151: 4973185-hd_1920_1080_30fps.mp4
+DEBUG 2025-01-01 08:16:42,421 VideoView.py VideoView upload_video 35: NOT NULL constraint failed: api_videos.isPublished
+ERROR 2025-01-01 08:16:42,422 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2025-01-01 08:17:06,179 serializer.py serializer create 151: 4973185-hd_1920_1080_30fps.mp4
+DEBUG 2025-01-01 08:17:15,704 VideoView.py VideoView upload_video 35: int() argument must be a string, a bytes-like object or a real number, not 'DeferredAttribute'
+ERROR 2025-01-01 08:17:15,705 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2025-01-01 08:21:29,765 serializer.py serializer create 151: 4973185-hd_1920_1080_30fps.mp4
+DEBUG 2025-01-01 08:21:41,614 VideoView.py VideoView upload_video 35: int() argument must be a string, a bytes-like object or a real number, not 'DeferredAttribute'
+ERROR 2025-01-01 08:21:41,615 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2025-01-01 08:22:56,214 serializer.py serializer create 151: 4973185-hd_1920_1080_30fps.mp4
+DEBUG 2025-01-01 08:23:09,288 VideoView.py VideoView upload_video 35: int() argument must be a string, a bytes-like object or a real number, not 'DeferredAttribute'
+ERROR 2025-01-01 08:23:09,289 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2025-01-01 08:24:37,784 serializer.py serializer create 151: 4973185-hd_1920_1080_30fps.mp4
+DEBUG 2025-01-01 08:24:49,948 VideoView.py VideoView upload_video 35: int() argument must be a string, a bytes-like object or a real number, not 'DeferredAttribute'
+ERROR 2025-01-01 08:24:49,950 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2025-01-01 08:26:16,870 serializer.py serializer create 151: 4973185-hd_1920_1080_30fps.mp4
+DEBUG 2025-01-01 08:26:16,872 serializer.py serializer create 153: 10
+DEBUG 2025-01-01 08:26:31,909 serializer.py serializer create 151: 4973185-hd_1920_1080_30fps.mp4
+DEBUG 2025-01-01 08:26:31,910 serializer.py serializer create 153: <class 'int'>
+DEBUG 2025-01-01 08:26:49,126 serializer.py serializer create 151: 4973185-hd_1920_1080_30fps.mp4
+DEBUG 2025-01-01 08:26:49,129 serializer.py serializer create 153: <class 'str'>
+DEBUG 2025-01-01 08:27:02,195 serializer.py serializer create 151: 4973185-hd_1920_1080_30fps.mp4
+DEBUG 2025-01-01 08:27:02,197 serializer.py serializer create 153: 10
+DEBUG 2025-01-01 08:27:14,740 VideoView.py VideoView upload_video 35: int() argument must be a string, a bytes-like object or a real number, not 'DeferredAttribute'
+ERROR 2025-01-01 08:27:14,742 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2025-01-01 08:32:42,255 serializer.py serializer create 151: 4973185-hd_1920_1080_30fps.mp4
+DEBUG 2025-01-01 08:32:42,256 serializer.py serializer create 153: 10
+DEBUG 2025-01-01 08:32:54,792 VideoView.py VideoView upload_video 35: int() argument must be a string, a bytes-like object or a real number, not 'DeferredAttribute'
+ERROR 2025-01-01 08:32:54,793 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2025-01-01 08:33:42,915 serializer.py serializer create 151: 4973185-hd_1920_1080_30fps.mp4
+DEBUG 2025-01-01 08:33:42,917 serializer.py serializer create 153: 10
+DEBUG 2025-01-01 08:33:54,743 VideoView.py VideoView upload_video 35: int() argument must be a string, a bytes-like object or a real number, not 'DeferredAttribute'
+ERROR 2025-01-01 08:33:54,745 log.py log log_response 248: Internal Server Error: /api/v1/upload_video
+DEBUG 2025-01-01 08:36:35,906 serializer.py serializer create 151: 4973185-hd_1920_1080_30fps.mp4
+DEBUG 2025-01-01 08:36:35,909 serializer.py serializer create 153: 10

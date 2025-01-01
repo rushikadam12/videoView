@@ -147,29 +147,31 @@ class VideoSerializer(serializers.ModelSerializer):
         user=self.context.get('userId')
 
         videoFile=validate_data.get("videoFile")
-        thumbnail=validate_data.get('thumbnail')
-
-        user=Users.objects.filter(pk=instance).first()
+        thumbnail=validate_data.get("thumbnail")
         
+        user=Users.objects.filter(pk=user).first()
         video_instance=Videos()
 
         if thumbnail:
-            avatar_img=cloudinary.uploader.upload(thumbnail,asset_folder="thumbnail",resource_type="image")
-            video_instance.videoFile=videoFile.get("secure_url")
+            thumbnail_img=cloudinary.uploader.upload(thumbnail,asset_folder="thumbnail",resource_type="image")
+            video_instance.thumbnail=thumbnail_img.get("secure_url")
         
         if videoFile:
            videoFile=cloudinary.uploader.upload(videoFile,asset_folder="video",resource_type="video")
-           video_instance.thumbnail=videoFile.get("secure_url")
+           video_instance.videoFile=videoFile.get("secure_url")
         
         
         
         video_instance.title=validate_data.get('title')
         video_instance.description=validate_data.get('description')
         video_instance.owner=user
+        video_instance.views=0
+        video_instance.isPublished=validate_data.get('isPublished')
+        video_instance.duration=validate_data['duration']
 
         video_instance.save()
 
-        return Videos
+        return video_instance
 
 
 
