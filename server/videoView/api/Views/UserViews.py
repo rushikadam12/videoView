@@ -27,8 +27,7 @@ def health_check(request):
 
 @api_view(['POST'])
 def signup(request):
-    
-    
+     
     serializer=UsersRegistrationSerializer(data=request.data)
     
     if serializer.is_valid():
@@ -95,7 +94,6 @@ def get_user(request):
             "coverImage":user.coverImage,
             "created_at":user.created_at,
             "updated_at":user.updated_at
-
             }
     else:
         user_obj={"message":"user not found"}
@@ -117,6 +115,7 @@ def logout_user(request):
         logger.debug(f"{e}")
         return Response(ApiResponse.error(500,"something went wrong",error=f"{e}").__dict__,status=500)
 
+
 @api_view(['PATCH'])
 @ValidateUser
 def update_user(request):
@@ -133,6 +132,7 @@ def update_user(request):
     except Exception as e:
         logger.debug(f"Error :{e}")
         return Response(ApiResponse.error(500,"something went wrong",{"message":f"{e}"}).__dict__,status=500)
+
 
 @api_view(['GET'])
 @ValidateUser
@@ -167,7 +167,7 @@ def request_access_token(request):
         return Response(ApiResponse.error(500,"something went wrong",{"message":f"{e}"}).__dict__,status=500)
 
 
- #TODO:Complete SMTP setup adn reset the password   
+ #TODO:Complete SMTP setup and reset the password   
 @api_view(['POST'])
 def reset_password(request):
     try:

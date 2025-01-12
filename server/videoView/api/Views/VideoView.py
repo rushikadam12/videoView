@@ -2,7 +2,7 @@ import logging
 from django.http import JsonResponse
 
 from rest_framework.decorators import api_view
-from api.serializer import VideoSerializer,AllVideoSerializer
+from api.serializer import VideoSerializer,AllVideoSerializer,UpdateVideoSerializer
 from api.models import Users,Videos
 from api.utility import ValidateUser
 from django.contrib.auth import authenticate
@@ -38,11 +38,32 @@ def upload_video(request):
 
 @api_view(['GET'])
 def get_all_videos(request):
+
     video_list=Videos.objects.all()
 
     serializer=AllVideoSerializer(video_list,many=True)
 
     return Response(ApiResponse.success(200,"fetched all videos",response=serializer.data).__dict__,status=200)
 
-# get_all_video/:id
-#
+@api_view(['GET'])
+def get_video_by_videoId(request,id):
+    try:
+        video_data=Videos.objects.get(id=id)
+        serializer=AllVideoSerializer(video_data)
+        if not video_data:
+            return Response(ApiResponse.error(401,"invalid id data not found",[]).__dict__,status=401)
+        
+        return Response(ApiResponse.error(200,"fetch video by id",serializer.data).__dict__,status=200)
+    except Exception as e:
+        
+        logger.debug(f"Error as occurred : {e}")
+        return Response(ApiResponse.error(401,"invalid id data not found",{"error":str(e)}).__dict__,status=401)
+
+    
+@api_view(['PATCH'])
+def update_video(request,id):
+    try:
+        serializer=UpdateVideoSerializer(data=request.data)
+        
+    except Exception as e:
+        return Response(ApiResponse.error(401,"upload failed",{"error":str(e)}).__dict__,status=401)

@@ -7,6 +7,7 @@ from api.utility import generated_refreshToken
 import cloudinary
 import cloudinary.uploader
 import logging
+# from utils.tusServer import tus_upload_server
 
 logger = logging.getLogger('api.serializer')  
 
@@ -158,8 +159,12 @@ class VideoSerializer(serializers.ModelSerializer):
             video_instance.thumbnail=thumbnail_img.get("secure_url")
         
         if videoFile:
+        #    resp=tus_upload_server(videoFile)
+        #    logger.debug(resp)
+
            videoFile=cloudinary.uploader.upload(videoFile,asset_folder="video",resource_type="video")
            video_instance.videoFile=videoFile.get("secure_url")
+           
         
         
         
@@ -171,6 +176,7 @@ class VideoSerializer(serializers.ModelSerializer):
         video_instance.duration=validate_data['duration']
 
         video_instance.save()
+
 
         return video_instance
 
@@ -185,3 +191,32 @@ class AllVideoSerializer(serializers.ModelSerializer):
         model=Videos
         fields=['id','videoFile','thumbnail','owner','title','description','duration','views','isPublished','created_at','updated_at']
 
+class UpdateVideoSerializer(serializers.ModelSerializer):
+    thumbnail=models.ImageField(required=False,allow_null=True)
+    class Meta:
+        models=Videos
+        fields=['thumbnail','title','description']
+        extra_kwargs={
+            'thumbnail': {'required': False, 'allow_null': True},
+            'title': {'required': False, 'allow_null': True},
+            'description': {'required': False, 'allow_null': True},   
+        }
+
+        def update(self,instance,validate_data):
+
+            if 'thumbnail' in validate_data:
+                image=validate_data.get('thumbnail')
+                updated_img=cloudinary.uploader.upload(image)
+                instance.thumbnail=updated_img.get("secure_url")
+            
+            if 'title' in validate_data:
+                new_title=validate_data.get('title')
+                instance.title=new_title
+            
+            if 'description' in validate_data:
+                new_description=validate_data.get('title')
+                instance.description=new_description
+            
+            instance.save()
+            
+            return isinstance
