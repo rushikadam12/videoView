@@ -190,24 +190,45 @@ class AllVideoSerializer(serializers.ModelSerializer):
     class Meta:
         model=Videos
         fields=['id','videoFile','thumbnail','owner','title','description','duration','views','isPublished','created_at','updated_at']
+class GetVideoByIdSerializer(serializers.ModelSerializer):
+    owner=UserSerializer(read_only=True)
+    class Meta:
+        model=Videos
+        fields=['id','videoFile','thumbnail','owner','title','description','duration','views','isPublished','created_at','updated_at']
+
+    def to_representation(self,instance):
+        
+        logger.debug(f"checking........{instance.video_viewed_by}")
+        # user_exits=Users.objects.get(id=user)
+        
+
+        # if instance.id not in user_exits.watchHistory:
+        #     instance.views+=1
+        #     instance.save()
+        #TODO:check for current use from context
+
+        return super(GetVideoByIdSerializer, self).to_representation(instance=instance)
 
 class UpdateVideoSerializer(serializers.ModelSerializer):
-    thumbnail=models.ImageField(required=False,allow_null=True)
+
+    thumbnail= serializers.ImageField(required=False, allow_null=True)
+
     class Meta:
-        models=Videos
+        model=Videos
         fields=['thumbnail','title','description']
-        extra_kwargs={
+        extra_kwargs = {
             'thumbnail': {'required': False, 'allow_null': True},
             'title': {'required': False, 'allow_null': True},
-            'description': {'required': False, 'allow_null': True},   
+            'description': {'required': False, 'allow_null': True}
         }
 
         def update(self,instance,validate_data):
 
             if 'thumbnail' in validate_data:
                 image=validate_data.get('thumbnail')
-                updated_img=cloudinary.uploader.upload(image)
-                instance.thumbnail=updated_img.get("secure_url")
+                if image:
+                    updated_img=cloudinary.uploader.upload(image,asset_folder="thumbnail",resource_type="image")
+                    instance.thumbnail=updated_img.get("secure_url")
             
             if 'title' in validate_data:
                 new_title=validate_data.get('title')
@@ -219,4 +240,4 @@ class UpdateVideoSerializer(serializers.ModelSerializer):
             
             instance.save()
             
-            return isinstance
+            return instance

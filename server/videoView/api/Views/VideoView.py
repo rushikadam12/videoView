@@ -2,7 +2,7 @@ import logging
 from django.http import JsonResponse
 
 from rest_framework.decorators import api_view
-from api.serializer import VideoSerializer,AllVideoSerializer,UpdateVideoSerializer
+from api.serializer import VideoSerializer,AllVideoSerializer,UpdateVideoSerializer,GetVideoByIdSerializer
 from api.models import Users,Videos
 from api.utility import ValidateUser
 from django.contrib.auth import authenticate
@@ -37,6 +37,7 @@ def upload_video(request):
     
 
 @api_view(['GET'])
+@ValidateUser
 def get_all_videos(request):
 
     video_list=Videos.objects.all()
@@ -46,10 +47,16 @@ def get_all_videos(request):
     return Response(ApiResponse.success(200,"fetched all videos",response=serializer.data).__dict__,status=200)
 
 @api_view(['GET'])
+@ValidateUser
 def get_video_by_videoId(request,id):
     try:
-        video_data=Videos.objects.get(id=id)
-        serializer=AllVideoSerializer(video_data)
+        try:
+            video_data=Videos.objects.get(id=id)
+        except video_data.DoesNotExist:
+            return Response(ApiResponse.error(401,"invalid id data not found",[]).__dict__,status=401)
+        
+        serializer=GetVideoByIdSerializer(video_data)
+        
         if not video_data:
             return Response(ApiResponse.error(401,"invalid id data not found",[]).__dict__,status=401)
         
@@ -61,9 +68,18 @@ def get_video_by_videoId(request,id):
 
     
 @api_view(['PATCH'])
+@ValidateUser
 def update_video(request,id):
     try:
-        serializer=UpdateVideoSerializer(data=request.data)
+        video_instance=Videos.objects.get(id=id)
         
+        serializer=UpdateVideoSerializer(data=request.data,instance=video_instance)
+        if serializer.is_valid():
+            update_video_instance=serializer.save()
+            return Response(ApiResponse.success(201,"checking",update_video_instance.title).__dict__,status=200)
+            
+        return Response(ApiResponse.success(201,"checking",serializer.errors).__dict__,status=200)
+
     except Exception as e:
+        logger.debug(f"Error found : {e}")
         return Response(ApiResponse.error(401,"upload failed",{"error":str(e)}).__dict__,status=401)

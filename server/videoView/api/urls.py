@@ -18,6 +18,7 @@ urlpatterns=[
     path("upload_video",upload_video,name="upload_user"),
     path("get_all_videos",get_all_videos,name="get_all_videos"),
     path("get_video_by_videoId/<str:id>/",get_video_by_videoId,name="get_video_by_videoId"),
+    path("update_video/<str:id>/",update_video,name="update_video"),
 
 
 ]
