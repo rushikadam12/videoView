@@ -1158,3 +1158,76 @@ WARNING 2025-01-16 05:40:03,149 log.py log log_response 248: Unauthorized: /api/
 DEBUG 2025-01-16 05:40:16,917 serializer.py serializer to_representation 200: api.Users.None
 DEBUG 2025-01-16 05:45:30,931 serializer.py serializer to_representation 201: checking........None
 DEBUG 2025-01-16 05:46:54,696 serializer.py serializer to_representation 201: checking........api.Users.None
+DEBUG 2025-01-17 16:14:32,355 VideoView.py VideoView get_video_by_videoId 67: Error as occurred : When a serializer is passed a `data` keyword argument you must call `.is_valid()` before attempting to access the serialized `.data` representation.
+You should either call `.is_valid()` first, or access `.initial_data` instead.
+WARNING 2025-01-17 16:14:32,355 log.py log log_response 248: Unauthorized: /api/v1/get_video_by_videoId/600ac1bb-4047-40a2-8aa3-bb4135870516/
+DEBUG 2025-01-17 16:24:20,491 VideoView.py VideoView get_video_by_videoId 63: checking..........{}
+DEBUG 2025-01-17 16:24:24,799 VideoView.py VideoView get_video_by_videoId 63: checking..........{}
+DEBUG 2025-01-17 16:24:40,908 VideoView.py VideoView get_video_by_videoId 63: checking..........{}
+DEBUG 2025-01-17 16:24:41,720 VideoView.py VideoView get_video_by_videoId 63: checking..........{}
+DEBUG 2025-01-17 16:24:42,441 VideoView.py VideoView get_video_by_videoId 63: checking..........{}
+DEBUG 2025-01-17 16:24:43,240 VideoView.py VideoView get_video_by_videoId 63: checking..........{}
+DEBUG 2025-01-17 16:25:35,096 VideoView.py VideoView get_video_by_videoId 67: Error as occurred : Cannot call `.is_valid()` as no `data=` keyword argument was passed when instantiating the serializer instance.
+WARNING 2025-01-17 16:25:35,096 log.py log log_response 248: Unauthorized: /api/v1/get_video_by_videoId/600ac1bb-4047-40a2-8aa3-bb4135870516/
+DEBUG 2025-01-17 16:25:51,705 VideoView.py VideoView get_video_by_videoId 63: checking..........{'id': '600ac1bb-4047-40a2-8aa3-bb4135870516', 'videoFile': 'https://res.cloudinary.com/das30jn7u/video/upload/v1735723199/k9lnoob0onluxttai59v.mp4', 'thumbnail': '4482736.png', 'owner': {'id': '4ee934b7-161c-4392-ae2f-2d74587d6d44', 'fullName': 'rushi', 'email': 'rushi@124gmail.com', 'avatar': 'https://res.cloudinary.com/das30jn7u/image/upload/v1735723073/nxxcfzveixpcpoznse4x.png', 'coverImage': None}, 'title': 'test101', 'description': 'description', 'duration': 10, 'views': 14, 'isPublished': True, 'created_at': '2025-01-01T09:20:00.581499Z', 'updated_at': '2025-01-17T16:25:51.695796Z'}
+DEBUG 2025-01-17 16:25:55,956 VideoView.py VideoView get_video_by_videoId 63: checking..........{'id': '600ac1bb-4047-40a2-8aa3-bb4135870516', 'videoFile': 'https://res.cloudinary.com/das30jn7u/video/upload/v1735723199/k9lnoob0onluxttai59v.mp4', 'thumbnail': '4482736.png', 'owner': {'id': '4ee934b7-161c-4392-ae2f-2d74587d6d44', 'fullName': 'rushi', 'email': 'rushi@124gmail.com', 'avatar': 'https://res.cloudinary.com/das30jn7u/image/upload/v1735723073/nxxcfzveixpcpoznse4x.png', 'coverImage': None}, 'title': 'test101', 'description': 'description', 'duration': 10, 'views': 15, 'isPublished': True, 'created_at': '2025-01-01T09:20:00.581499Z', 'updated_at': '2025-01-17T16:25:55.950413Z'}
+ERROR 2025-01-17 16:49:19,956 log.py log log_response 248: Internal Server Error: /api/v1/delete_video/600ac1bb-4047-40a2-8aa3-bb4135870516/
+ERROR 2025-01-17 16:50:15,367 log.py log log_response 248: Internal Server Error: /api/v1/delete_video/600ac1bb-4047-40a2-8aa3-bb4135870516/
+DEBUG 2025-01-17 16:55:52,555 VideoView.py VideoView get_video_by_videoId 67: Error as occurred : local variable 'video_data' referenced before assignment
+WARNING 2025-01-17 16:55:52,555 log.py log log_response 248: Unauthorized: /api/v1/get_video_by_videoId/600ac1bb-4047-40a2-8aa3-bb4135870516/
+WARNING 2025-01-17 17:02:23,990 log.py log log_response 248: Method Not Allowed: /api/v1/is_published/600ac1bb-4047-40a2-8aa3-bb4135870516/
+ERROR 2025-01-17 17:02:57,398 log.py log log_response 248: Internal Server Error: /api/v1/is_published/600ac1bb-4047-40a2-8aa3-bb4135870516/
+ERROR 2025-01-17 17:05:17,309 log.py log log_response 248: Internal Server Error: /api/v1/is_published/600ac1bb-4047-40a2-8aa3-bb4135870516/
+ERROR 2025-01-17 17:06:32,429 log.py log log_response 248: Internal Server Error: /api/v1/is_published/4ea48abe-cec6-4b37-ab9c-37e253412416/
+Traceback (most recent call last):
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/lib/python3.10/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+  File "/usr/lib/python3.10/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Videos is not JSON serializable
+ERROR 2025-01-17 17:06:54,138 log.py log log_response 248: Internal Server Error: /api/v1/is_published/4ea48abe-cec6-4b37-ab9c-37e253412416/
+Traceback (most recent call last):
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/lib/python3.10/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+  File "/usr/lib/python3.10/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type ModelState is not JSON serializable
+ERROR 2025-01-17 17:08:29,845 log.py log log_response 248: Internal Server Error: /api/v1/is_published/4ea48abe-cec6-4b37-ab9c-37e253412416/
+ERROR 2025-01-17 17:08:43,463 log.py log log_response 248: Internal Server Error: /api/v1/is_published/4ea48abe-cec6-4b37-ab9c-37e253412416/
+DEBUG 2025-01-17 17:11:51,130 VideoView.py VideoView get_video_by_videoId 63: checking..........{'id': '4ea48abe-cec6-4b37-ab9c-37e253412416', 'videoFile': 'https://res.cloudinary.com/das30jn7u/video/upload/v1736961185/yd7svebhffp8e1nhbz2r.mp4', 'thumbnail': 'https://res.cloudinary.com/das30jn7u/image/upload/v1736961175/n196naoywz58y3iuvgu5.png', 'owner': {'id': '4ee934b7-161c-4392-ae2f-2d74587d6d44', 'fullName': 'rushi', 'email': 'rushi@124gmail.com', 'avatar': 'https://res.cloudinary.com/das30jn7u/image/upload/v1735723073/nxxcfzveixpcpoznse4x.png', 'coverImage': None}, 'title': 'test', 'description': 'test', 'duration': 10, 'views': 1, 'isPublished': False, 'created_at': '2025-01-15T17:13:05.828791Z', 'updated_at': '2025-01-17T17:11:51.122809Z'}

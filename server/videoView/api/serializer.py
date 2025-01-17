@@ -198,16 +198,16 @@ class GetVideoByIdSerializer(serializers.ModelSerializer):
 
     def to_representation(self,instance):
         
-        logger.debug(f"checking........{instance.video_viewed_by}")
-        # user_exits=Users.objects.get(id=user)
+        # logger.debug(f"checking........{instance.video_viewed_by}")
+        # user_exits=self.context.get('user_id').id
         
-
         # if instance.id not in user_exits.watchHistory:
-        #     instance.views+=1
-        #     instance.save()
-        #TODO:check for current use from context
-
-        return super(GetVideoByIdSerializer, self).to_representation(instance=instance)
+        # TODO:Check for model to update views only one per user
+        
+        instance.views+=1
+        instance.save()
+        
+        return super(GetVideoByIdSerializer, self).to_representation(instance)
 
 class UpdateVideoSerializer(serializers.ModelSerializer):
 

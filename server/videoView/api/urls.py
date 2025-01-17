@@ -19,6 +19,8 @@ urlpatterns=[
     path("get_all_videos",get_all_videos,name="get_all_videos"),
     path("get_video_by_videoId/<str:id>/",get_video_by_videoId,name="get_video_by_videoId"),
     path("update_video/<str:id>/",update_video,name="update_video"),
+    path("delete_video/<str:video_id>/",delete_video,name="delete_video"),
+    path("is_published/<str:video_id>/",is_published,name="is_published"),
 
 
 ]

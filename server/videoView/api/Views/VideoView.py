@@ -50,16 +50,17 @@ def get_all_videos(request):
 @ValidateUser
 def get_video_by_videoId(request,id):
     try:
+        user=request.user_id
         try:
             video_data=Videos.objects.get(id=id)
         except video_data.DoesNotExist:
             return Response(ApiResponse.error(401,"invalid id data not found",[]).__dict__,status=401)
         
-        serializer=GetVideoByIdSerializer(video_data)
+        serializer=GetVideoByIdSerializer(instance=video_data,context={"userId":user})
         
         if not video_data:
             return Response(ApiResponse.error(401,"invalid id data not found",[]).__dict__,status=401)
-        
+        logger.debug(f"checking..........{serializer.data}")
         return Response(ApiResponse.error(200,"fetch video by id",serializer.data).__dict__,status=200)
     except Exception as e:
         
@@ -76,10 +77,42 @@ def update_video(request,id):
         serializer=UpdateVideoSerializer(data=request.data,instance=video_instance)
         if serializer.is_valid():
             update_video_instance=serializer.save()
-            return Response(ApiResponse.success(201,"checking",update_video_instance.title).__dict__,status=200)
+            return Response(ApiResponse.success(201,"video update successfully",update_video_instance.title).__dict__,status=200)
             
-        return Response(ApiResponse.success(201,"checking",serializer.errors).__dict__,status=200)
+        return Response(ApiResponse.error(400,"error",serializer.errors).__dict__,status=400)
 
     except Exception as e:
         logger.debug(f"Error found : {e}")
-        return Response(ApiResponse.error(401,"upload failed",{"error":str(e)}).__dict__,status=401)
+        return Response(ApiResponse.error(401,"upload failed",{"error":str(e)}).__dict__,status=500)
+
+@api_view(['DELETE'])
+@ValidateUser
+def delete_video(request,video_id):
+    try:
+        try:
+            current_video=Videos.objects.get(id=video_id)
+        except current_video.DoesNotExist:
+            return Response(ApiResponse.error(400,"video not found",[]).__dict__,status=400)    
+        current_video.delete()
+        return Response(ApiResponse.success(200,"video delete successfully",[]).__dict__,status=200)
+    except Exception as e:
+        return Response(ApiResponse.error(401,"upload failed",{"error":str(e)}).__dict__,status=500)
+
+@api_view(['GET'])
+@ValidateUser
+def is_published(request,video_id):
+    try:
+
+        try:
+            current_video=Videos.objects.get(id=video_id)
+        except current_video.DoesNotExist:
+            return Response(ApiResponse.error(400,"video not found",[]).__dict__,status=400)    
+
+        current_video.isPublished=not current_video.isPublished
+        current_video.save()
+        return Response(ApiResponse.success(200,"video updated successfully",[]).__dict__,status=200)
+    except Exception as e:
+        return Response(ApiResponse.error(401,"upload failed",{"error":str(e)}).__dict__,status=500)
+
+
+
