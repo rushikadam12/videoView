@@ -1,10 +1,12 @@
 from django.urls import path
 from api.Views.UserViews import *
 from api.Views.VideoView import *
+from api.Views.SubscriberView import *
 
 urlpatterns=[
 
     path("healthcheck",health_check,name="health_check"),
+    
     # users
     path("signup",signup,name="signup") ,
     path("login",login,name="login")  ,
@@ -23,4 +25,6 @@ urlpatterns=[
     path("is_published/<str:video_id>/",is_published,name="is_published"),
 
 
+    # subscriber
+    path("toggle_subscription/<str:channel_id>/",toggle_subscription,name="toggle_subscription"),
 ]

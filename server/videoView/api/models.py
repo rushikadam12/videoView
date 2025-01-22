@@ -23,7 +23,7 @@ class Users(models.Model):
     refreshToken=models.TextField()
 
     def __str__(self):
-        return self.username
+        return self.fullName
     
 class Videos(models.Model):
     id=models.UUIDField(
@@ -51,16 +51,16 @@ class Videos(models.Model):
         return self.title
     
     
-# class Subscriptions(models.Model):
-#     id=models.UUIDField(
-#         primary_key=True,
-#         default=uuid.uuid4,
-#         editable=False
-#     )
-#     created_at=models.DateTimeField(auto_now_add=True)
-#     updated_at=models.DateTimeField(auto_now=True)
-#     subscriber=models.ForeignKey('Users',related_name="subscribed_user",on_delete=models.CASCADE)
-#     channel=models.ForeignKey('Users',related_name="subscribed_channel",on_delete=models.CASCADE)
+class Subscriptions(models.Model):
+    id=models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
+    )
+    created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now=True)
+    subscriber=models.ForeignKey('Users',related_name="subscribed_user",on_delete=models.CASCADE,null=True)
+    channel=models.ForeignKey('Users',related_name="subscribed_channel",on_delete=models.CASCADE,null=True)
 
 
 # class Likes(models.Model):
