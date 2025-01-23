@@ -1470,3 +1470,223 @@ DEBUG 2025-01-22 17:31:01,501 SubscriberView.py SubscriberView toggle_subscripti
 DEBUG 2025-01-22 17:31:06,109 SubscriberView.py SubscriberView toggle_subscription 25: logged in user:rushi
 DEBUG 2025-01-22 17:31:06,110 SubscriberView.py SubscriberView toggle_subscription 26: channel user:rushi
 DEBUG 2025-01-22 17:31:06,111 SubscriberView.py SubscriberView toggle_subscription 38: Subscriptions matching query does not exist.
+DEBUG 2025-01-23 04:31:50,772 SubscriberView.py SubscriberView get_videos_by_channel_Id 67: Error found :QuerySet.first() got an unexpected keyword argument 'owner'
+ERROR 2025-01-23 04:31:50,799 log.py log log_response 248: Internal Server Error: /api/v1/get_videos_by_channel_Id/44d0472f-7c4d-4a93-99b7-ad6728c86e86/
+Traceback (most recent call last):
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 511, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 423, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+AssertionError: Expected a `Response`, `HttpResponse` or `StreamingHttpResponse` to be returned from the view, but received a `<class 'NoneType'>`
+DEBUG 2025-01-23 04:32:55,626 SubscriberView.py SubscriberView get_videos_by_channel_Id 68: Error found :QuerySet.first() got an unexpected keyword argument 'owner'
+ERROR 2025-01-23 04:32:55,629 log.py log log_response 248: Internal Server Error: /api/v1/get_videos_by_channel_Id/44d0472f-7c4d-4a93-99b7-ad6728c86e86/
+DEBUG 2025-01-23 04:34:38,595 SubscriberView.py SubscriberView get_videos_by_channel_Id 68: Error found :Users matching query does not exist.
+ERROR 2025-01-23 04:34:38,595 log.py log log_response 248: Internal Server Error: /api/v1/get_videos_by_channel_Id/44d0472f-7c4d-4a93-99b7-ad6728c86e86/
+WARNING 2025-01-23 16:58:32,883 log.py log log_response 248: Unauthorized: /api/v1/toggle_subscription/44d0472f-7c4d-4a93-99b7-ad6728c86e86/
+DEBUG 2025-01-23 16:58:43,149 SubscriberView.py SubscriberView toggle_subscription 25: logged in user:rushi
+DEBUG 2025-01-23 16:58:43,149 SubscriberView.py SubscriberView toggle_subscription 26: channel user:rushi
+DEBUG 2025-01-23 16:58:46,249 SubscriberView.py SubscriberView toggle_subscription 25: logged in user:rushi
+DEBUG 2025-01-23 16:58:46,250 SubscriberView.py SubscriberView toggle_subscription 26: channel user:rushi
+DEBUG 2025-01-23 16:58:46,251 SubscriberView.py SubscriberView toggle_subscription 37: Subscriptions matching query does not exist.
+DEBUG 2025-01-23 16:59:22,856 SubscriberView.py SubscriberView get_videos_by_channel_Id 72: Error found :Users matching query does not exist.
+ERROR 2025-01-23 16:59:22,856 log.py log log_response 248: Internal Server Error: /api/v1/get_videos_by_channel_Id/44d0472f-7c4d-4a93-99b7-ad6728c86e86/
+DEBUG 2025-01-23 17:04:10,537 SubscriberView.py SubscriberView toggle_subscription 25: logged in user:rushi
+DEBUG 2025-01-23 17:04:10,538 SubscriberView.py SubscriberView toggle_subscription 26: channel user:rushi
+DEBUG 2025-01-23 17:04:10,539 SubscriberView.py SubscriberView toggle_subscription 37: Subscriptions matching query does not exist.
+DEBUG 2025-01-23 17:04:14,643 SubscriberView.py SubscriberView toggle_subscription 25: logged in user:rushi
+DEBUG 2025-01-23 17:04:14,644 SubscriberView.py SubscriberView toggle_subscription 26: channel user:rushi
+DEBUG 2025-01-23 17:04:22,073 SubscriberView.py SubscriberView get_videos_by_channel_Id 72: Error found :Users matching query does not exist.
+ERROR 2025-01-23 17:04:22,073 log.py log log_response 248: Internal Server Error: /api/v1/get_videos_by_channel_Id/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-23 17:06:48,591 SubscriberView.py SubscriberView get_videos_by_channel_Id 73: Error found :Cannot use QuerySet for "Subscriptions": Use a QuerySet for "Users".
+ERROR 2025-01-23 17:06:48,592 log.py log log_response 248: Internal Server Error: /api/v1/get_videos_by_channel_Id/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-23 17:07:35,996 SubscriberView.py SubscriberView get_videos_by_channel_Id 73: Error found :Cannot use QuerySet for "Subscriptions": Use a QuerySet for "Users".
+ERROR 2025-01-23 17:07:35,997 log.py log log_response 248: Internal Server Error: /api/v1/get_videos_by_channel_Id/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-23 17:09:14,834 SubscriberView.py SubscriberView get_videos_by_channel_Id 73: Error found :Cannot use QuerySet for "Subscriptions": Use a QuerySet for "Users".
+ERROR 2025-01-23 17:09:14,835 log.py log log_response 248: Internal Server Error: /api/v1/get_videos_by_channel_Id/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-23 17:11:40,516 SubscriberView.py SubscriberView get_videos_by_channel_Id 74: Error found :Subscriptions matching query does not exist.
+ERROR 2025-01-23 17:11:40,517 log.py log log_response 248: Internal Server Error: /api/v1/get_videos_by_channel_Id/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-23 17:11:57,326 SubscriberView.py SubscriberView get_videos_by_channel_Id 74: Error found :Subscriptions matching query does not exist.
+ERROR 2025-01-23 17:11:57,327 log.py log log_response 248: Internal Server Error: /api/v1/get_videos_by_channel_Id/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-23 17:12:18,887 SubscriberView.py SubscriberView get_videos_by_channel_Id 74: Error found :Subscriptions matching query does not exist.
+ERROR 2025-01-23 17:12:18,888 log.py log log_response 248: Internal Server Error: /api/v1/get_videos_by_channel_Id/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-23 17:12:36,402 SubscriberView.py SubscriberView get_videos_by_channel_Id 74: Error found :Subscriptions matching query does not exist.
+ERROR 2025-01-23 17:12:36,402 log.py log log_response 248: Internal Server Error: /api/v1/get_videos_by_channel_Id/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-23 17:13:08,789 SubscriberView.py SubscriberView get_videos_by_channel_Id 74: Error found :Subscriptions matching query does not exist.
+ERROR 2025-01-23 17:13:08,790 log.py log log_response 248: Internal Server Error: /api/v1/get_videos_by_channel_Id/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-23 17:13:53,226 SubscriberView.py SubscriberView get_videos_by_channel_Id 66: channel_obj..............: <QuerySet []>
+DEBUG 2025-01-23 17:14:10,856 SubscriberView.py SubscriberView get_videos_by_channel_Id 66: channel_obj..............: None
+DEBUG 2025-01-23 17:14:44,772 SubscriberView.py SubscriberView get_videos_by_channel_Id 66: channel_obj..............: Subscriptions object (ffd27642-1a82-4d13-9ffe-9b83abaea6b6)
+DEBUG 2025-01-23 17:15:40,844 SubscriberView.py SubscriberView get_videos_by_channel_Id 66: channel_obj..............: Subscriptions object (ffd27642-1a82-4d13-9ffe-9b83abaea6b6)
+DEBUG 2025-01-23 17:15:40,844 SubscriberView.py SubscriberView get_videos_by_channel_Id 74: Error found :Cannot query "Subscriptions object (ffd27642-1a82-4d13-9ffe-9b83abaea6b6)": Must be "Users" instance.
+ERROR 2025-01-23 17:15:40,845 log.py log log_response 248: Internal Server Error: /api/v1/get_videos_by_channel_Id/44d0472f-7c4d-4a93-99b7-ad6728c86e86/
+DEBUG 2025-01-23 17:16:52,765 SubscriberView.py SubscriberView get_videos_by_channel_Id 66: channel_obj..............: rushi
+DEBUG 2025-01-23 17:16:52,765 SubscriberView.py SubscriberView get_videos_by_channel_Id 74: Error found :name 'all_videos_list' is not defined
+ERROR 2025-01-23 17:16:52,766 log.py log log_response 248: Internal Server Error: /api/v1/get_videos_by_channel_Id/44d0472f-7c4d-4a93-99b7-ad6728c86e86/
+DEBUG 2025-01-23 17:17:09,038 SubscriberView.py SubscriberView get_videos_by_channel_Id 66: channel_obj..............: rushi
+DEBUG 2025-01-23 17:17:09,040 SubscriberView.py SubscriberView get_videos_by_channel_Id 71: rushi@100gmail.com
+DEBUG 2025-01-23 17:21:13,096 SubscriberView.py SubscriberView get_videos_by_channel_Id 66: channel_obj..............: rushi
+DEBUG 2025-01-23 17:21:13,099 SubscriberView.py SubscriberView get_videos_by_channel_Id 73: rushi@100gmail.com
+DEBUG 2025-01-23 17:21:52,618 SubscriberView.py SubscriberView get_videos_by_channel_Id 66: channel_obj..............: rushi
+DEBUG 2025-01-23 17:21:52,620 SubscriberView.py SubscriberView get_videos_by_channel_Id 73: rushi@124gmail.com
+ERROR 2025-01-23 17:33:57,678 log.py log log_response 248: Internal Server Error: /api/v1/get_subscriber_count/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+Traceback (most recent call last):
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+TypeError: get_subscriber_count() got an unexpected keyword argument 'channel_id'
+ERROR 2025-01-23 17:34:18,938 log.py log log_response 248: Internal Server Error: /api/v1/get_subscriber_count/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+Traceback (most recent call last):
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+TypeError: get_subscriber_count() got an unexpected keyword argument 'channel_id'
+ERROR 2025-01-23 17:37:07,691 log.py log log_response 248: Internal Server Error: /api/v1/get_subscriber_count/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+Traceback (most recent call last):
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+TypeError: get_subscriber_count() got an unexpected keyword argument 'channel_id'
+ERROR 2025-01-23 17:37:42,038 log.py log log_response 248: Internal Server Error: /api/v1/get_subscriber_count/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+Traceback (most recent call last):
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+TypeError: get_subscriber_count() got an unexpected keyword argument 'channel_id'
+ERROR 2025-01-23 17:38:18,589 log.py log log_response 248: Internal Server Error: /api/v1/get_subscriber_count/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+Traceback (most recent call last):
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+TypeError: get_subscriber_count() got an unexpected keyword argument 'channel_id'
+ERROR 2025-01-23 17:40:03,237 log.py log log_response 248: Internal Server Error: /api/v1/get_subscriber_count/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+Traceback (most recent call last):
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+TypeError: get_subscriber_count() got an unexpected keyword argument 'channel_id'
+ERROR 2025-01-23 17:41:13,812 log.py log log_response 248: Internal Server Error: /api/v1/get_subscriber_count/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+Traceback (most recent call last):
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/lib/python3.10/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+  File "/usr/lib/python3.10/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type method is not JSON serializable
+DEBUG 2025-01-23 17:42:06,981 SubscriberView.py SubscriberView toggle_subscription 25: logged in user:rushi
+DEBUG 2025-01-23 17:42:06,982 SubscriberView.py SubscriberView toggle_subscription 26: channel user:rushi
+DEBUG 2025-01-23 17:42:06,983 SubscriberView.py SubscriberView toggle_subscription 37: Subscriptions matching query does not exist.

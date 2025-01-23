@@ -27,4 +27,7 @@ urlpatterns=[
 
     # subscriber
     path("toggle_subscription/<str:channel_id>/",toggle_subscription,name="toggle_subscription"),
+    path("get_videos_by_channel_Id/<str:channel_id>/",get_videos_by_channel_Id,name="get_videos_by_channel_Id"),
+    path("get_subscriber_count/<str:channel_id>/",get_subscriber_count,name="get_subscriber_count"),
+    
 ]
