@@ -62,40 +62,49 @@ class Subscriptions(models.Model):
     subscriber=models.ForeignKey('Users',related_name="subscribed_user",on_delete=models.CASCADE,null=True)
     channel=models.ForeignKey('Users',related_name="subscribed_channel",on_delete=models.CASCADE,null=True)
 
+class Likes(models.Model):
+    id=models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
+    )
+    created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now=True)
+    comment=models.ForeignKey('Comments',null=True,blank=True,on_delete=models.CASCADE)
+    tweet=models.ForeignKey('Tweets',null=True,blank=True,on_delete=models.CASCADE)
+    video=models.ForeignKey('Videos',null=True,blank=True,on_delete=models.CASCADE)
+    likedBy=models.ForeignKey('Users',null=True,blank=True,on_delete=models.CASCADE)
 
-# class Likes(models.Model):
-#     id=models.UUIDField(
-#         primary_key=True,
-#         default=uuid.uuid4,
-#         editable=False
-#     )
-#     created_at=models.DateTimeField(auto_now_add=True)
-#     updated_at=models.DateTimeField(auto_now=True)
-#     comment=models.ForeignKey('Comments',null=True,blank=True,on_delete=models.CASCADE)
-#     tweet=models.ForeignKey('Tweets',null=True,blank=True,on_delete=models.CASCADE)
-#     video=models.ForeignKey('Videos',null=True,blank=True,on_delete=models.CASCADE)
-#     likedBy=models.ForeignKey('Users',null=True,blank=True,on_delete=models.CASCADE)
+class Comments(models.Model):
+    id=models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
+    )
+    owner = models.ForeignKey('Users',on_delete=models.CASCADE)
+    video = models.ForeignKey('Videos', on_delete=models.CASCADE)
+    content=models.TextField()
 
-# class Comments(models.Model):
-#     id=models.UUIDField(
-#         primary_key=True,
-#         default=uuid.uuid4,
-#         editable=False
-#     )
-#     owner = models.ForeignKey('Users',on_delete=models.CASCADE)
-#     video = models.ForeignKey('Videos', on_delete=models.CASCADE)
-#     content=models.TextField()
+class PlayList(models.Model):
+    id=models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
+    )
+    name=models.CharField(max_length=250)
+    description=models.TextField()
+    created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now=True)
+    owner=models.ForeignKey('Users',on_delete=models.CASCADE)
+    videos=models.ManyToManyField('Videos',related_name="playlist")
 
-# class PlayList(models.Model):
-#     id=models.UUIDField(
-#         primary_key=True,
-#         default=uuid.uuid4,
-#         editable=False
-#     )
-#     name=models.CharField(max_length=250)
-#     description=models.TextField()
-#     created_at=models.DateTimeField(auto_now_add=True)
-#     updated_at=models.DateTimeField(auto_now=True)
-#     owner=models.ForeignKey('Users',on_delete=models.CASCADE)
-#     videos=models.ManyToManyField('Videos',related_name="playlist",on_delete=models.CASCADE)
-    
+class Tweets(models.Model):
+    id=models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
+    )
+    created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now=True)
+    owner=models.ForeignKey('Users',on_delete=models.CASCADE)
+    content=models.CharField(max_length=255,null=False)

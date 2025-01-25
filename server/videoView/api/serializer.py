@@ -4,6 +4,7 @@ from django.contrib.auth.hashers import make_password
 from datetime import datetime
 from .models import *
 from api.utility import generated_refreshToken
+
 import cloudinary
 import cloudinary.uploader
 import logging
@@ -241,3 +242,8 @@ class UpdateVideoSerializer(serializers.ModelSerializer):
             instance.save()
             
             return instance
+
+# class CreateLikesModelInstance(models.Model):
+#     class Meta:
+#         model=Likes
+#         fields=['comment']

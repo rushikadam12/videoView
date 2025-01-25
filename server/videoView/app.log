@@ -1739,3 +1739,14 @@ DEBUG 2025-01-25 12:38:55,416 SubscriberView.py SubscriberView get_channel_info 
 ERROR 2025-01-25 12:38:55,417 log.py log log_response 248: Internal Server Error: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d4/
 DEBUG 2025-01-25 12:39:07,005 SubscriberView.py SubscriberView get_channel_info 101: Error found:['“4ee934b7-161c-4392-ae2f-2d74587d6d4” is not a valid UUID.']
 ERROR 2025-01-25 12:39:07,006 log.py log log_response 248: Internal Server Error: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d4/
+DEBUG 2025-01-25 13:55:28,088 utility.py utility wraps_func 86: Invalid token type. Token must be a <class 'bytes'>
+WARNING 2025-01-25 13:55:28,088 log.py log log_response 248: Forbidden: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-25 13:56:18,832 utility.py utility wraps_func 86: Invalid token type. Token must be a <class 'bytes'>
+WARNING 2025-01-25 13:56:18,832 log.py log log_response 248: Forbidden: /api/v1/like_video_by_user/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-25 13:56:48,028 utility.py utility wraps_func 86: Invalid token type. Token must be a <class 'bytes'>
+WARNING 2025-01-25 13:56:48,028 log.py log log_response 248: Forbidden: /api/v1/get_videos_by_channel_Id/44d0472f-7c4d-4a93-99b7-ad6728c86e86/
+DEBUG 2025-01-25 13:56:55,143 LikesView.py LikesView like_video_by_user 44: Error found : Videos matching query does not exist.
+ERROR 2025-01-25 13:56:55,143 log.py log log_response 248: Internal Server Error: /api/v1/like_video_by_user/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-25 13:57:30,740 LikesView.py LikesView like_video_by_user 44: Error found : Cannot assign "'97315440-5ec6-4e71-b852-5a5229ae0bda'": "Likes.video" must be a "Videos" instance.
+ERROR 2025-01-25 13:57:30,740 log.py log log_response 248: Internal Server Error: /api/v1/like_video_by_user/97315440-5ec6-4e71-b852-5a5229ae0bda/
+WARNING 2025-01-25 13:58:47,914 log.py log log_response 248: Bad Request: /api/v1/like_video_by_user/97315440-5ec6-4e71-b852-5a5229ae0bda/

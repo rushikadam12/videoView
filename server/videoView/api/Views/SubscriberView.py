@@ -52,11 +52,7 @@ def toggle_subscription(request,channel_id):
         return Response(ApiResponse.success(500,"channel subscription failed",[]).__dict__,status=500)
 
 
-# TODO:
-# 1)create api for GET all video of particular channel DONE
-# 2)create api for GET subscriber count DONE
-#3)create api GET subscriber count by the channel DONE
-#4)create api GET channel info by channel_Id 
+
 
 @api_view(['GET'])
 @ValidateUser

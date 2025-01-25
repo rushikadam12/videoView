@@ -2,6 +2,8 @@ from django.urls import path
 from api.Views.UserViews import *
 from api.Views.VideoView import *
 from api.Views.SubscriberView import *
+from api.Views.LikesView import *
+from api.Views.CommentsView import *
 
 urlpatterns=[
 
@@ -30,5 +32,8 @@ urlpatterns=[
     path("get_videos_by_channel_Id/<str:channel_id>/",get_videos_by_channel_Id,name="get_videos_by_channel_Id"),
     path("get_subscriber_count/<str:channel_id>/",get_subscriber_count,name="get_subscriber_count"),
     path("get_channel_info/<str:channel_id>/",get_channel_info,name="get_channel_info"),
-    
+
+    #Likes
+
+    path("like_video_by_user/<str:video_id>/",like_video_by_user,name="like_video_by_user"),
 ]
