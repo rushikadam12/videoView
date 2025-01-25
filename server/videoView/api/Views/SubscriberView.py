@@ -2,7 +2,7 @@ import logging
 from django.http import JsonResponse
 
 from rest_framework.decorators import api_view
-from api.serializer import VideoSerializer,AllVideoSerializer,UpdateVideoSerializer,GetVideoByIdSerializer,Subscriptions
+from api.serializer import VideoSerializer,AllVideoSerializer,UpdateVideoSerializer,GetVideoByIdSerializer,Subscriptions,UserSerializer
 from api.models import Users,Videos,Subscriptions
 from api.utility import ValidateUser
 from django.contrib.auth import authenticate
@@ -31,7 +31,7 @@ def toggle_subscription(request,channel_id):
         try:
             already_exits=Subscriptions.objects.get(subscriber=current_user.id,channel=channel_id)
             already_exits.delete()
-            return Response(ApiResponse.success(201,"channel unsubscribed successfully",[]).__dict__,status=201)
+            return Response(ApiResponse.success(200,"channel unsubscribed successfully",[]).__dict__,status=200)
 
         except Subscriptions.DoesNotExist as e:
             logger.debug(str(e))
@@ -55,10 +55,11 @@ def toggle_subscription(request,channel_id):
 # TODO:
 # 1)create api for GET all video of particular channel DONE
 # 2)create api for GET subscriber count DONE
-#3)create api GET subscriber count by the channel
-#4)create api GET channel info by channel_Id
+#3)create api GET subscriber count by the channel DONE
+#4)create api GET channel info by channel_Id 
 
 @api_view(['GET'])
+@ValidateUser
 def get_videos_by_channel_Id(request,channel_id):
     try:
         channel_obj=Users.objects.get(id=channel_id)
@@ -66,16 +67,36 @@ def get_videos_by_channel_Id(request,channel_id):
         # serializer
         serializer=AllVideoSerializer(all_videos,many=True).data
 
-        return Response(ApiResponse.success(201,"Fetched video successfully",serializer).__dict__,status=201)        
+        return Response(ApiResponse.success(200,"Fetched video successfully",serializer).__dict__,status=200)        
     except Exception as e:
         logger.debug(f"Error found :{e}")
         return Response(ApiResponse.success(401,f"{e}",{}).__dict__,status=500)        
 
 @api_view(['GET'])
+@ValidateUser
 def get_subscriber_count(request,channel_id):
     try:
          subscriber_count=Subscriptions.objects.filter(channel=channel_id).count()
-         return Response(ApiResponse.success(201,"Fetched video successfully",{"subscriber_count":subscriber_count}).__dict__,status=201)        
+         return Response(ApiResponse.success(200,"Fetched video successfully",{"subscriber_count":subscriber_count}).__dict__,status=200)        
     except Exception as e:
         logger.debug(f"Error found :{e}")
-        return Response(ApiResponse.success(401,f"{e}",{}).__dict__,status=500)   
+        return Response(ApiResponse.success(401,f"{e}",{}).__dict__,status=500)
+
+@api_view(['GET'])
+@ValidateUser
+def get_channel_info(request,channel_id):
+    try:
+        try:
+            current_user=Users.objects.get(id=channel_id)
+        except Users.DoesNotExist as e:
+            return Response(ApiResponse.error(401,"user not found",{}).__dict__,status=400)     
+        
+        #get user info 
+        serializer_data=UserSerializer(current_user).data
+        
+        return Response(ApiResponse.success(201,"Fetched video successfully",serializer_data).__dict__,status=200) 
+
+
+    except Exception as e:
+        logger.debug(f"Error found:{e}")
+        return Response(ApiResponse.error(401,f"{e}",{}).__dict__,status=500)

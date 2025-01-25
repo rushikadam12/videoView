@@ -1690,3 +1690,52 @@ TypeError: Object of type method is not JSON serializable
 DEBUG 2025-01-23 17:42:06,981 SubscriberView.py SubscriberView toggle_subscription 25: logged in user:rushi
 DEBUG 2025-01-23 17:42:06,982 SubscriberView.py SubscriberView toggle_subscription 26: channel user:rushi
 DEBUG 2025-01-23 17:42:06,983 SubscriberView.py SubscriberView toggle_subscription 37: Subscriptions matching query does not exist.
+WARNING 2025-01-25 12:27:40,108 log.py log log_response 248: Unauthorized: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-25 12:27:51,453 SubscriberView.py SubscriberView get_channel_info 96: Error found:name 'channel_Id' is not defined
+ERROR 2025-01-25 12:27:51,453 log.py log log_response 248: Internal Server Error: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-25 12:28:50,108 SubscriberView.py SubscriberView get_channel_info 99: Error found:local variable 'serializer' referenced before assignment
+ERROR 2025-01-25 12:28:50,109 log.py log log_response 248: Internal Server Error: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-25 12:29:40,584 SubscriberView.py SubscriberView get_channel_info 102: Error found:local variable 'serializer' referenced before assignment
+ERROR 2025-01-25 12:29:40,587 log.py log log_response 248: Internal Server Error: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-25 12:30:12,271 SubscriberView.py SubscriberView get_channel_info 102: Error found:local variable 'serializer' referenced before assignment
+ERROR 2025-01-25 12:30:12,272 log.py log log_response 248: Internal Server Error: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-25 12:30:30,822 SubscriberView.py SubscriberView get_channel_info 102: Error found:name 'serializer' is not defined
+ERROR 2025-01-25 12:30:30,822 log.py log log_response 248: Internal Server Error: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-25 12:31:53,177 SubscriberView.py SubscriberView get_channel_info 102: Error found:Cannot call `.is_valid()` as no `data=` keyword argument was passed when instantiating the serializer instance.
+ERROR 2025-01-25 12:31:53,177 log.py log log_response 248: Internal Server Error: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-25 12:32:05,341 SubscriberView.py SubscriberView get_channel_info 102: Error found:Cannot call `.is_valid()` as no `data=` keyword argument was passed when instantiating the serializer instance.
+ERROR 2025-01-25 12:32:05,342 log.py log log_response 248: Internal Server Error: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-25 12:32:38,647 SubscriberView.py SubscriberView get_channel_info 102: Error found:Cannot call `.is_valid()` as no `data=` keyword argument was passed when instantiating the serializer instance.
+ERROR 2025-01-25 12:32:38,647 log.py log log_response 248: Internal Server Error: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-25 12:32:48,045 SubscriberView.py SubscriberView get_channel_info 102: Error found:local variable 'result' referenced before assignment
+ERROR 2025-01-25 12:32:48,046 log.py log log_response 248: Internal Server Error: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+ERROR 2025-01-25 12:33:34,808 log.py log log_response 248: Internal Server Error: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+Traceback (most recent call last):
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 511, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 423, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+AssertionError: Expected a `Response`, `HttpResponse` or `StreamingHttpResponse` to be returned from the view, but received a `<class 'NoneType'>`
+WARNING 2025-01-25 12:34:13,150 log.py log log_response 248: Bad Request: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-25 12:36:04,966 SubscriberView.py SubscriberView get_channel_info 104: Error found:When a serializer is passed a `data` keyword argument you must call `.is_valid()` before attempting to access the serialized `.data` representation.
+You should either call `.is_valid()` first, or access `.initial_data` instead.
+ERROR 2025-01-25 12:36:04,967 log.py log log_response 248: Internal Server Error: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-25 12:36:23,716 SubscriberView.py SubscriberView get_channel_info 96: rushi@124gmail.com
+WARNING 2025-01-25 12:36:23,717 log.py log log_response 248: Bad Request: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-25 12:37:16,315 SubscriberView.py SubscriberView get_channel_info 101: Error found:When a serializer is passed a `data` keyword argument you must call `.is_valid()` before attempting to access the serialized `.data` representation.
+You should either call `.is_valid()` first, or access `.initial_data` instead.
+ERROR 2025-01-25 12:37:16,316 log.py log log_response 248: Internal Server Error: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-01-25 12:38:19,027 SubscriberView.py SubscriberView get_channel_info 100: Error found:['“4ee934b7-161c-4392-ae2f-2d74587d6d4” is not a valid UUID.']
+ERROR 2025-01-25 12:38:19,028 log.py log log_response 248: Internal Server Error: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d4/
+DEBUG 2025-01-25 12:38:55,416 SubscriberView.py SubscriberView get_channel_info 100: Error found:['“4ee934b7-161c-4392-ae2f-2d74587d6d4” is not a valid UUID.']
+ERROR 2025-01-25 12:38:55,417 log.py log log_response 248: Internal Server Error: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d4/
+DEBUG 2025-01-25 12:39:07,005 SubscriberView.py SubscriberView get_channel_info 101: Error found:['“4ee934b7-161c-4392-ae2f-2d74587d6d4” is not a valid UUID.']
+ERROR 2025-01-25 12:39:07,006 log.py log log_response 248: Internal Server Error: /api/v1/get_channel_info/4ee934b7-161c-4392-ae2f-2d74587d6d4/
