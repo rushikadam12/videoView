@@ -1750,3 +1750,9 @@ ERROR 2025-01-25 13:56:55,143 log.py log log_response 248: Internal Server Error
 DEBUG 2025-01-25 13:57:30,740 LikesView.py LikesView like_video_by_user 44: Error found : Cannot assign "'97315440-5ec6-4e71-b852-5a5229ae0bda'": "Likes.video" must be a "Videos" instance.
 ERROR 2025-01-25 13:57:30,740 log.py log log_response 248: Internal Server Error: /api/v1/like_video_by_user/97315440-5ec6-4e71-b852-5a5229ae0bda/
 WARNING 2025-01-25 13:58:47,914 log.py log log_response 248: Bad Request: /api/v1/like_video_by_user/97315440-5ec6-4e71-b852-5a5229ae0bda/
+WARNING 2025-02-01 04:48:42,458 log.py log log_response 248: Not Found: /api/devices/
+DEBUG 2025-02-01 04:54:09,678 CommentsView.py CommentsView add_comment_to_video 48: Error found : 'Request' object has no attribute 'userId'
+ERROR 2025-02-01 04:54:09,679 log.py log log_response 248: Internal Server Error: /api/v1/add_comment_to_video/4ea48abe-cec6-4b37-ab9c-37e253412416/
+DEBUG 2025-02-01 04:55:02,693 CommentsView.py CommentsView add_comment_to_video 48: Error found : NOT NULL constraint failed: api_comments.content
+ERROR 2025-02-01 04:55:02,694 log.py log log_response 248: Internal Server Error: /api/v1/add_comment_to_video/4ea48abe-cec6-4b37-ab9c-37e253412416/
+ERROR 2025-02-01 04:55:28,793 log.py log log_response 248: Internal Server Error: /api/v1/add_comment_to_video/4ea48abe-cec6-4b37-ab9c-37e253412416/

@@ -36,4 +36,7 @@ urlpatterns=[
     #Likes
 
     path("like_video_by_user/<str:video_id>/",like_video_by_user,name="like_video_by_user"),
+
+    #Comments
+    path("add_comment_to_video/<str:video_id>/",add_comment_to_video,name="add_comment_to_video"),
 ]
