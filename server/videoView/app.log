@@ -1756,3 +1756,53 @@ ERROR 2025-02-01 04:54:09,679 log.py log log_response 248: Internal Server Error
 DEBUG 2025-02-01 04:55:02,693 CommentsView.py CommentsView add_comment_to_video 48: Error found : NOT NULL constraint failed: api_comments.content
 ERROR 2025-02-01 04:55:02,694 log.py log log_response 248: Internal Server Error: /api/v1/add_comment_to_video/4ea48abe-cec6-4b37-ab9c-37e253412416/
 ERROR 2025-02-01 04:55:28,793 log.py log log_response 248: Internal Server Error: /api/v1/add_comment_to_video/4ea48abe-cec6-4b37-ab9c-37e253412416/
+WARNING 2025-02-11 04:32:30,976 log.py log log_response 248: Not Found: /api/v1/get_all_comments/4ea48abe-cec6-4b37-ab9c-37e253412416/
+DEBUG 2025-02-11 04:35:16,165 CommentsView.py CommentsView get_all_comments 82: Error found : get() returned more than one Comments -- it returned 2!
+ERROR 2025-02-11 04:35:16,166 log.py log log_response 248: Internal Server Error: /api/v1/get_all_comments/4ea48abe-cec6-4b37-ab9c-37e253412416/
+DEBUG 2025-02-11 04:35:40,454 CommentsView.py CommentsView get_all_comments 82: Error found : get() returned more than one Comments -- it returned 2!
+ERROR 2025-02-11 04:35:40,455 log.py log log_response 248: Internal Server Error: /api/v1/get_all_comments/4ea48abe-cec6-4b37-ab9c-37e253412416/
+DEBUG 2025-02-11 04:36:10,172 CommentsView.py CommentsView get_all_comments 82: Error found : Cannot call `.is_valid()` as no `data=` keyword argument was passed when instantiating the serializer instance.
+ERROR 2025-02-11 04:36:10,173 log.py log log_response 248: Internal Server Error: /api/v1/get_all_comments/4ea48abe-cec6-4b37-ab9c-37e253412416/
+DEBUG 2025-02-11 04:36:31,614 CommentsView.py CommentsView get_all_comments 82: Error found : Cannot call `.is_valid()` as no `data=` keyword argument was passed when instantiating the serializer instance.
+ERROR 2025-02-11 04:36:31,615 log.py log log_response 248: Internal Server Error: /api/v1/get_all_comments/4ea48abe-cec6-4b37-ab9c-37e253412416/
+DEBUG 2025-02-11 04:37:19,282 CommentsView.py CommentsView get_all_comments 81: Error found : 'Comments' object has no attribute 'views'
+ERROR 2025-02-11 04:37:19,282 log.py log log_response 248: Internal Server Error: /api/v1/get_all_comments/4ea48abe-cec6-4b37-ab9c-37e253412416/
+DEBUG 2025-02-11 04:38:37,288 CommentsView.py CommentsView add_comment_to_video 45: Error found : Videos matching query does not exist.
+ERROR 2025-02-11 04:38:37,288 log.py log log_response 248: Internal Server Error: /api/v1/add_comment_to_video/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-02-11 04:38:50,895 CommentsView.py CommentsView add_comment_to_video 45: Error found : Videos matching query does not exist.
+ERROR 2025-02-11 04:38:50,896 log.py log log_response 248: Internal Server Error: /api/v1/add_comment_to_video/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+DEBUG 2025-02-12 04:04:30,328 CommentsView.py CommentsView add_comment_to_video 45: Error found : Videos matching query does not exist.
+ERROR 2025-02-12 04:04:30,330 log.py log log_response 248: Internal Server Error: /api/v1/add_comment_to_video/4ee934b7-161c-4392-ae2f-2d74587d6d44/
+WARNING 2025-02-12 04:05:06,725 log.py log log_response 248: Not Found: /api/v1/add_comment_to_video/3ec98797-a07f-4cdf-ba33-a38f758d085c//
+WARNING 2025-02-12 04:05:14,019 log.py log log_response 248: Not Found: /api/v1/add_comment_to_video/3ec98797-a07f-4cdf-ba33-a38f758d085c//
+WARNING 2025-02-12 04:05:54,003 log.py log log_response 248: Not Found: /api/v1/add_comment_to_video/3ec98797-a07f-4cdf-ba33-a38f758d085c//
+WARNING 2025-02-12 04:06:21,369 log.py log log_response 248: Method Not Allowed: /api/v1/add_comment_to_video/97315440-5ec6-4e71-b852-5a5229ae0bda/
+DEBUG 2025-02-12 04:09:41,098 CommentsView.py CommentsView get_all_comments 80: Error found : ['“97315440-5ec6-4e71-b852-5a5229ae0ba” is not a valid UUID.']
+ERROR 2025-02-12 04:09:41,098 log.py log log_response 248: Internal Server Error: /api/v1/get_all_comments/97315440-5ec6-4e71-b852-5a5229ae0ba/
+ERROR 2025-02-12 04:17:11,744 log.py log log_response 248: Internal Server Error: /api/v1/delete_video_comment/8d194759-60c8-4d1b-84dc-182c3eb39f46/
+Traceback (most recent call last):
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/home/rushikeshkadam/code_space/videoView/server/videoView/api/utility.py", line 89, in wraps_func
+    return func(request,*args,**kwargs)
+TypeError: delete_video_comment() got an unexpected keyword argument 'video_id'
+DEBUG 2025-02-12 04:18:05,255 CommentsView.py CommentsView delete_video_comment 66: Error found : Comments matching query does not exist.
+ERROR 2025-02-12 04:18:05,256 log.py log log_response 248: Internal Server Error: /api/v1/delete_video_comment/8d194759-60c8-4d1b-84dc-182c3eb39f46/
+DEBUG 2025-02-12 04:25:36,486 CommentsView.py CommentsView delete_video_comment 61: Error found : Comments matching query does not exist.
+WARNING 2025-02-12 04:25:36,486 log.py log log_response 248: Bad Request: /api/v1/delete_video_comment/8d194759-60c8-4d1b-84dc-182c3eb39f46/

@@ -39,4 +39,6 @@ urlpatterns=[
 
     #Comments
     path("add_comment_to_video/<str:video_id>/",add_comment_to_video,name="add_comment_to_video"),
+    path("delete_video_comment/<str:comment_id>/",delete_video_comment,name="delete_video_comment"),
+    path("get_all_comments/<str:video_id>/",get_all_comments,name="get_all_comments"),
 ]

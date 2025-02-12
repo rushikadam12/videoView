@@ -247,3 +247,8 @@ class UpdateVideoSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model=Likes
 #         fields=['comment']
+
+class GetVideoComments(serializers.ModelSerializer):
+    class Meta:
+        model=Comments
+        fields=['id','content','owner','video']

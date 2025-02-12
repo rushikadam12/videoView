@@ -2,7 +2,7 @@ import logging
 from django.http import JsonResponse
 from django.db import transaction
 from rest_framework.decorators import api_view
-from api.serializer import VideoSerializer,AllVideoSerializer,UpdateVideoSerializer,GetVideoByIdSerializer,Subscriptions,UserSerializer
+from api.serializer import VideoSerializer,AllVideoSerializer,UpdateVideoSerializer,GetVideoByIdSerializer,Subscriptions,UserSerializer,GetVideoComments
 from api.models import Users,Videos,Subscriptions,Likes,Comments
 from api.utility import ValidateUser
 from django.contrib.auth import authenticate
@@ -47,3 +47,41 @@ def add_comment_to_video(request,video_id):
     except Exception as e:
         logger.debug(f"Error found : {e}")
         return Response(ApiResponse.error(500,"failed to add comment",[]).__dict__,status=500)
+
+@api_view(['DELETE'])
+@ValidateUser
+# TODO:Test after creating the API for get_all_comments
+def delete_video_comment(request,comment_id):
+    try:
+        comment_instance=Comments.objects.get(id=comment_id)        
+        comment_instance.delete()
+
+        return Response(ApiResponse.success(200,"comment deleted successfully",[]).__dict__,status=200)
+    except Comments.DoesNotExist as e:
+        logger.debug(f"Error found : {e}")
+        return Response(ApiResponse.error(400,"comment not found",[]).__dict__,status=400)
+    except Exception as e:
+        logger.debug(f"Error found : {e}")
+        return Response(ApiResponse.error(500,"failed to add comment",[]).__dict__,status=500)
+
+
+@api_view(['GET'])
+@ValidateUser
+def get_all_comments(request,video_id):
+    try:
+        comments_instance=Comments.objects.filter(video_id=video_id)
+        
+        # final result
+        result=[]
+
+        for comment in comments_instance:
+            serializers=GetVideoComments(comment)
+            result.append(serializers.data)
+
+        return Response(ApiResponse.success(200,"get comments successfully",result).__dict__,status=200)
+    except Comments.DoesNotExist as e:
+        logger.debug(f"Error found : comment not found") 
+        return Response(ApiResponse.error(400,"Invalid video Id",[]).__dict__,status=400)
+    except Exception as e:
+        logger.debug(f"Error found : {e}")
+        return Response(ApiResponse.error(500,"failed to get comment",[]).__dict__,status=500)
