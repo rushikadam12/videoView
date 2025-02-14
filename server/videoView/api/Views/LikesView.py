@@ -22,9 +22,6 @@ logger = logging.getLogger('api.LikesView')
 #create api for like for tweet
 
 
-
-
-
 @api_view(['GET'])
 @ValidateUser
 def like_video_by_user(request,video_id):
@@ -37,20 +34,44 @@ def like_video_by_user(request,video_id):
             current_user=Users.objects.get(id=user_id)
             video_instance=Videos.objects.get(id=video_id)
             
-            #check for instance
-            if not current_user or not video_instance:
-                return Response(ApiResponse.error(401,"error while finding user or video",{}).__dict__,status=400)
             # check for instance of certain likes exists already
             likes_instance_exists=Likes.objects.filter(video=video_instance,likedBy=current_user).exists()
 
             if likes_instance_exists:
                 likes_instance=Likes.objects.get(video=video_instance,likedBy=current_user)
                 likes_instance.delete()
-                return Response(ApiResponse.success(200,"video like removed successfully",{}).__dict__,status=400)
+                return Response(ApiResponse.success(200,"video like removed successfully",{}).__dict__,status=200)
             else:
                 likes=Likes.objects.create(video=video_instance,likedBy=current_user)
                 return Response(ApiResponse.success(200,"video liked successfully",likes.id).__dict__,status=200)
-            
+    except Users.DoesNotExist as e:
+        return Response(ApiResponse.error(401,"error while finding user or video",{}).__dict__,status=400)
+    except Videos.DoesNotExist as e:
+        return Response(ApiResponse.error(401,"error while finding user or video",{}).__dict__,status=400)
     except Exception as e:
         logger.debug(f"Error found : {e}")
         return Response(ApiResponse.error(500,"likes failed",[]).__dict__,status=500)
+
+@api_view(['GET'])
+def like_comment_by_user(request,comment_id):
+    try:
+        user_id=request.user_id
+        
+        with transaction.atomic():
+            current_user=Users.objects.get(id=user_id)
+            like_instance_exists=Likes.objects.filter(comment=comment_id,liked_by=current_user).exists()
+
+            if like_instance_exists:
+                like_instance=Likes.objects.get(comment=comment_id,likeBy=current_user)
+                like_instance.delete()
+                return Response(ApiResponse.success(200,"comment like removed successfully",{}).__dict__,status=200)
+            
+            likes=Likes.objects.create(comment=comment_id,likedBy=current_user)
+            return Response(ApiResponse.success(200,"comment liked successfully",likes.id).__dict__,status=200)
+
+    except Users.DoesNotExist as e:
+        logger.debug(f"Error found : {e}")
+        return Response(ApiResponse.error(400,"user not found",[]).__dict__,status=400)
+    except Exception as e:
+        logger.debug(f"Error found : {e}")
+        return Response(ApiResponse.error(500,"failed to add likes to comment ",[]).__dict__,status=500)

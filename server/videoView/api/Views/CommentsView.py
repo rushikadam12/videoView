@@ -50,16 +50,17 @@ def add_comment_to_video(request,video_id):
 
 @api_view(['DELETE'])
 @ValidateUser
-# TODO:Test after creating the API for get_all_comments
 def delete_video_comment(request,comment_id):
     try:
         comment_instance=Comments.objects.get(id=comment_id)        
         comment_instance.delete()
 
         return Response(ApiResponse.success(200,"comment deleted successfully",[]).__dict__,status=200)
+    
     except Comments.DoesNotExist as e:
         logger.debug(f"Error found : {e}")
         return Response(ApiResponse.error(400,"comment not found",[]).__dict__,status=400)
+    
     except Exception as e:
         logger.debug(f"Error found : {e}")
         return Response(ApiResponse.error(500,"failed to add comment",[]).__dict__,status=500)
@@ -79,9 +80,11 @@ def get_all_comments(request,video_id):
             result.append(serializers.data)
 
         return Response(ApiResponse.success(200,"get comments successfully",result).__dict__,status=200)
+    
     except Comments.DoesNotExist as e:
         logger.debug(f"Error found : comment not found") 
         return Response(ApiResponse.error(400,"Invalid video Id",[]).__dict__,status=400)
+    
     except Exception as e:
         logger.debug(f"Error found : {e}")
         return Response(ApiResponse.error(500,"failed to get comment",[]).__dict__,status=500)

@@ -1806,3 +1806,6 @@ DEBUG 2025-02-12 04:18:05,255 CommentsView.py CommentsView delete_video_comment 
 ERROR 2025-02-12 04:18:05,256 log.py log log_response 248: Internal Server Error: /api/v1/delete_video_comment/8d194759-60c8-4d1b-84dc-182c3eb39f46/
 DEBUG 2025-02-12 04:25:36,486 CommentsView.py CommentsView delete_video_comment 61: Error found : Comments matching query does not exist.
 WARNING 2025-02-12 04:25:36,486 log.py log log_response 248: Bad Request: /api/v1/delete_video_comment/8d194759-60c8-4d1b-84dc-182c3eb39f46/
+WARNING 2025-02-14 04:10:38,887 log.py log log_response 248: Unauthorized: /api/v1/delete_video_comment/8d194759-60c8-4d1b-84dc-182c3eb39f46/
+DEBUG 2025-02-14 04:10:48,870 CommentsView.py CommentsView delete_video_comment 61: Error found : Comments matching query does not exist.
+WARNING 2025-02-14 04:10:48,870 log.py log log_response 248: Bad Request: /api/v1/delete_video_comment/8d194759-60c8-4d1b-84dc-182c3eb39f46/
